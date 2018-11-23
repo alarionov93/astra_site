@@ -1,0 +1,17 @@
+{% extends '_base.html' %}
+{% load bootstrap3 %}
+
+{% block content %}
+  <hr>
+  <h4 class="text-center text-danger">Внимание! Ахтунг!</h4>
+  <hr>
+  <form action="" method="post" class="form"  enctype="multipart/form-data">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    {% buttons %}
+        <button type="submit" class="btn btn-primary">
+            {% bootstrap_icon "plus" %} Добавить
+        </button>
+    {% endbuttons %}
+  </form>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends '_base.html' %}
+
+{% block content %}
+  <div style="overflow-x: scroll;">
+  <table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Имя</th>
+      <th>Мастер</th>
+      <th>Продолжительность</th>
+      <th>Услуга</th>
+      <th>Время</th>
+      <th>Клиент</th>
+      <th>Удалить</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for n in journal_record %}
+      <tr style="cursor: pointer;"
+          onclick="window.location='{% url 'journal_record_update' n.id %}';this.style.background='#f0f0f0';"
+          onmouseover="this.style.background='#fffccf'"
+          onmouseout="this.style.background='#fff';">
+        <td>{{ n.id }}</td>
+        <td>{{ n.name }}</td>
+        <td>{{ n.master }}</td>
+        <td>{{ n.duration }}</td>
+        <td>{{ n.service }}</td>
+        <td>{{ n.time }}</td>
+        <td>{{ n.client }}</td>
+        <td><a href="{% url 'journal_record_remove' n.id %}"><i class="fa fa-remove text-danger"></i></a></td>
+      </tr>
+    {% endfor %}
+  </tbody>
+  </table>
+  </div>
+{% endblock %}
+
+
+{% block box-toolbox-r %}
+  <a href="{% url 'journal_record_add' %}">
+    <button type="button" class="btn btn-success">
+      <i class="fa fa-plus"></i>&nbsp;Добавить
+    </button>
+  </a>
+{% endblock %}

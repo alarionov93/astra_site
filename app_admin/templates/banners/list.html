@@ -1,0 +1,42 @@
+{% extends '_base.html' %}
+
+{% block content %}
+  <div style="overflow-x: scroll;">
+  <table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Имя</th>
+      <th>Включен</th>
+{#      <th>Изменить</th>#}
+    </tr>
+  </thead>
+  <tbody>
+    {% for banner in banners %}
+      <tr style="cursor: pointer;"
+          onclick="window.location='{% url 'banner_update' banner.id %}';this.style.background='#f0f0f0';"
+          onmouseover="this.style.background='#fffccf'"
+          onmouseout="this.style.background='#fff';">
+        <td>{{ banner.id }}</td>
+        <td>{{ banner.name }}</td>
+        {% if banner.enabled == True %}
+          <td><i class="text-success fa fa-check"></i></td>
+        {% else %}
+          <td><i class="text-danger fa fa-remove"></i></td>
+        {% endif %}
+{#        <td><a href="{% url 'banner_update' banner.id %}"><i class="fa fa-pencil"></i></a></td>#}
+      </tr>
+    {% endfor %}
+  </tbody>
+  </table>
+  </div>
+{% endblock %}
+
+
+{% block box-toolbox-r %}
+  <a href="{% url 'banner_add' %}">
+    <button type="button" class="btn btn-success">
+      <i class="fa fa-plus"></i>&nbsp;Добавить
+    </button>
+  </a>
+{% endblock %}

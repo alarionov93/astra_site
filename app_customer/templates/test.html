@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Test</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript">
+		var first = {
+			'fgfgfg': {
+				'аываы': {
+					'п': 'a', 
+					'ж': 'b',
+					'х': 'c'
+				}
+			}, 
+			2: 'd',
+			3: 'e'
+		};
+
+		function hideshow(id) {
+			this.event.stopPropagation();
+			console.log('#' + id + ' > li');
+			$('#' + id + ' > li > ul').animate({
+				left: "+=50",
+				height: "toggle"
+			}, 200, function() {
+				// Animation complete.
+			});
+		}
+		function getCategoryContents(cat_obj, div) {
+			for (prop in cat_obj) {
+				var x = cat_obj[prop];
+				// var cat_id_tmp = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5);
+				$("#ul_" + div).append('<li id="li_' + prop + '">' + prop + '</li>');
+				if (typeof x != 'string') {
+					$('#li_'+prop).append('<ul onclick="hideshow(\'ul_' + prop + '\');" id="ul_' + prop + '"></ul>')
+					getCategoryContents(x, prop);
+				}
+			}
+		};
+		$(document).ready(function(){
+			getCategoryContents(first, 'cat-list');
+		});
+	</script>
+</head>
+<body>
+<ul id="ul_cat-list" onclick="hideshow('ul_cat-list');">
+	
+</ul>
+</body>
+</html>

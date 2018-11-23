@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app_customer',
+    'app_admin',
+    'bootstrap3',
     'core',
 ]
 
@@ -107,7 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Yekaterinburg'
 
 USE_I18N = True
 
@@ -115,8 +117,89 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.0/howto/static-files/
+# https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATIC_ROOT = os.path.join(os.path.abspath(BASE_DIR), 'static')
+
+print(STATIC_ROOT)
+STATICFILES_DIRS = [
+    # os.path.join(BASE_DIR, 'static'),
+]
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(os.path.abspath(BASE_DIR), 'media')
+
+SITE_SETTINGS = {
+    # required settings
+    'site_name': 'Astra',
+    'c_site_name': 'Салон красоты Астра',
+    # 'shop_email': 'uskoritel59@yandex.ru',
+    # 'admin_email': 'alarionov93@yandex.ru',
+    # 'company_phones': [
+        # '8 (342) 203-23-43',
+        # '8 (342) 263-17-17'
+    # ],
+    # 'company_addresses': [
+        # 'г. Пермь, ул. Пушкарская, 132',
+        # 'г. Пермь, ул. Соликамская, 271 А'
+    # ],
+    # 'news_lifetime': 60, # integer value in days
+    # 'min_order_sum': 0,
+    # web panel report error
+    # 'web_panel_report_error_url': 'http://a-larionov.ru:5001/reports/new',
+    # 'event_group_id': 6, # 6 for web panel production srv
+    # non required settings
+    # used for order creation form to show or not show
+    # address field, and other fields needed for delivery
+    # 'delivery_type_id_to_show_address': const.DELIVERY_TYPE_ID_HOME,
+    # 'delivery_type_self_id': const.DELIVERY_TYPE_ID_SHOP,
+    # 'delivery_price': 150,
+    # 'discount': False,
+    # 'delivery_out_city_price': 250, 
+    # 'end_of_free_ship': '11.11.2016',
+    # 'min_order_sum_settings': {'do_not_check': False, 'product_id_to_cancel_min_order_sum': None},
+    #'min_order_sum_settings': {'do_not_check': True, 'product_id_to_cancel_min_order_sum': 164}, # set it to enable min order sum cancelling
+    # 'orders_show_from_delta_days': 60,
+    # 'payments_enabled': True # to temporary switch off payments
+}
+# # default value for order items statistics
+# # DEFAULT_STAT_PERIOD = 15
+
+INTERNAL_IPS = (
+    '0.0.0.0',
+    '127.0.0.1',
+)
+
+# REST_FRAMEWORK = {
+#     'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.AllowAny',),
+#     # 'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser',),
+#     # 'DEFAULT_AUTHENTICATION_CLASSES': (
+#     #     'rest_framework.authentication.BasicAuthentication',
+#     #     'rest_framework.authentication.SessionAuthentication',
+#     # ),
+#     'PAGE_SIZE': 10
+# }
+# USER_DETAILS_SERIALIZER = UserSerializer
+
+# Email settings SMTP
+
+# EMAIL_HOST = 'smtp.yandex.ru'
+
+# EMAIL_PROVIDER = 'yandex.ru'
+
+# EMAIL_PORT = 465
+
+# EMAIL_HOST_USER = 'alarionov93'
+
+# EMAIL_HOST_PASSWORD = 'TRANSALPrd10e2001125'
+
+# EMAIL_USE_SSL = True
+
+# MAIL_FAIL_SILENT = False
+
+# ADMIN_EMAIL = '%s@%s' % (EMAIL_HOST_USER, EMAIL_PROVIDER)
+
+# DEFAULT_FROM_EMAIL = ADMIN_EMAIL

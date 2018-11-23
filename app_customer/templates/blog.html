@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block content %}
+	<section>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="blog-post-area">
+						<h2 class="title text-center">Новости</h2>
+						{% for n in news %}
+						<div class="row" style="margin-top: 4em;">
+							<h3><p class="text-center" style="margin-top: 2em;">{{ n.header }}</p></h3>
+							{% if n.img %}
+							<div class="col-sm-6">
+								<img class="img-responsive" src="{{ n.img.url }}" alt="">
+							</div>
+							<div class="col-sm-6">
+								<p>{{ n.description }}</p>
+							</div>
+							{% else %}
+							<div class="col-sm-12">
+								<p>{{ n.description }}</p>
+							</div>
+							{% endif %}
+							<div class="col-sm-12" style="margin-top: 4em;">
+								<div class="post-meta">
+									<ul>
+										<!-- <li><i class="fa fa-user"></i> Mac Doe</li> -->
+										<li><i class="fa fa-clock-o"></i>{{ n.time_posted }}</li>
+										<li><i class="fa fa-calendar"></i>{{ n.date_posted }}</li>
+									</ul>
+									<!-- <span> -->
+											<!-- <i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star-half-o"></i> -->
+									<!-- </span> -->
+								</div>
+							</div>
+							<!-- <a  class="btn btn-primary" href="{% url 'blog_post' n.id %}">Read More</a> -->
+						</div>
+						{% empty %}
+						<div class="row">
+							<div class="container">
+								<h3 class="text-warning text-center" style="margin-top: 2em;margin-bottom: 2em;">Нет последних новостей</h3>
+							</div>
+						</div>
+						{% endfor %}
+						<!-- <div class="pagination-area">
+							<ul class="pagination">
+								<li><a href="" class="active">1</a></li>
+								<li><a href="">2</a></li>
+								<li><a href="">3</a></li>
+								<li><a href=""><i class="fa fa-angle-double-right"></i></a></li>
+							</ul>
+						</div> -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+{% endblock %}

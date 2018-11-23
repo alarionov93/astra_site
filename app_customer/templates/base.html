@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content=""><!-- TODO: create this -->
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="keywords" content=""><!-- TODO: create this -->
+    <meta name="subject" content="Запчасти для отечественных автомобилей и иномарок">
+    <meta name="Classification" content="Запчасти для отечественных автомобилей и иномарок">
+    <meta name="author" content="">
+    <meta property="og:url"                content="http://uskoritel59.ru" />
+    <meta property="og:type"               content="article" />
+    <meta property="og:title"              content="Uskoritel59.ru | Автозапчасти" />
+
+	<title>{{ c_site_name }} | {{ page_header }}</title>
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/prettyPhoto.css' %}" rel="stylesheet">
+    <link href="{% static 'css/price-range.css' %}" rel="stylesheet">
+    <link href="{% static 'css/animate.css' %}" rel="stylesheet">
+	<link href="{% static 'css/main.css' %}" rel="stylesheet">
+	<link href="{% static 'css/responsive.css' %}" rel="stylesheet">
+	<link href="{% static 'css/slick.css' %}" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->       
+    <link rel="shortcut icon" href="images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+	
+</head><!--/head-->
+
+<body style="background-image: url('static/images/home/texture.jpg');">
+	<!-- <div class="background-imgs">
+		<img src="{% static 'images/home/flag.png' %}" class="img-responsive">
+	</div> -->
+	<div class="background-waiter" style="z-index: 130 !important;" data-bind="visible: waiter.status()"></div>
+    <div id="waiter" class="lds-spinner" data-bind="visible: waiter.status()" style="display: none;">
+    	<div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+    </div>
+	<header id="header"><!--header-->
+		
+		<div class="header-middle"><!--header-middle-->
+
+		</div><!--/header-middle-->
+	
+		<div class="header-bottom" style="padding: 0; box-shadow: 0 4px 2px -2px gray;"><!--header-bottom-->
+			<div style="background-color: #f7f4cf; width: 100%; height: 90px;">
+				<div style="padding-top: 30px; padding-left: 100px; float: left; font-size: 18pt;">
+					Салон красоты в Закамске
+				</div>
+				<!-- <div style="width: 30%; padding-top: 40px; padding-left: 100px; float: right;">
+					<span style="margin-right: 20px;">Мастера</span>
+					<span style="margin-right: 20px;">Услуги</span>
+					<span>Контакты</span>
+				</div> -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
+				<div class="mainmenu pull-right" style="padding-top: 40px;margin-right: 70px; float: right;">
+					<ul class="nav navbar-nav collapse navbar-collapse">
+						<li><a href="{% url 'site_index' %}#service"{% if current_page == 'main' %} class="active" {% endif %}>Услуги</a></li>
+					</ul>
+					<ul class="nav navbar-nav collapse navbar-collapse">
+						<li><a href="{% url 'site_index' %}#master"{% if current_page == 'main' %} class="active" {% endif %}>Мастера</a></li>
+					</ul>
+					<ul class="nav navbar-nav collapse navbar-collapse">
+						<li><a href="{% url 'site_index' %}#contact"{% if current_page == 'main' %} class="active" {% endif %}>Контакты</a></li>
+					</ul>
+				</div>
+			</div>
+			<!-- <div class="container" style=""> -->
+				<!-- <div class="row"> -->
+					<!-- <div class="col-sm-5 col-md-4 col-lg-4 col-xs-12" style="padding: 0;">
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+						</div>
+						<div class="mainmenu pull-right">
+							<ul class="nav navbar-nav collapse navbar-collapse">
+								<li><a href="{% url 'site_index' %}"{% if current_page == 'main' %} class="active" {% endif %}>Главная</a></li>
+							</ul>
+						</div>
+					</div> -->
+					<!-- <div class="col-sm-2 col-md-4 col-lg-4 col-xs-12" style="padding: 0;"><img src="{% static 'images/home/' %}" class="img-responsive" style=""></div>
+					<div class="col-sm-5 col-md-4 col-lg-4 col-xs-12" style="color: #000;padding: 2px;font-family: 'Roboto', sans-serif; margin-top: -10px;float: right;">
+						<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 text-center" data-bind="foreach: settings().company_phones">
+							<span style="white-space: nowrap;" data-bind="text: $data"></span><br>
+						</div>
+						<div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 text-center" data-bind="foreach: settings().company_addresses">
+							<span style="white-space: nowrap;" data-bind="text: $data"></span><br>
+						</div>
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center" style="margin-top: 20px;max-height: 20px;">
+							<p><span><a style="color: #FF9200; font-size: 16pt;" href="mailto: abc@d.e" style="white-space: nowrap;">abc@d.e</a></span></p><br>
+						</div>
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center" style="margin-top: 20px;max-height: 20px;">
+							<p><span><a style="color: #FF9200; font-size: 16pt;" href="https://vk.com" style="white-space: nowrap;">vk</a></span></p><br>
+						</div>
+					</div> -->
+				<!-- </div> -->
+			<!-- </div> -->
+		</div><!--/header-bottom-->
+	</header><!--/header-->
+	
+	<!-- <section id="temp">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6" id="slider1">
+					{% for p in photos %}
+					<div>
+						<div style="background-image: url('/static/{{ p }}');
+                                    position:relative;
+                                    width: 100%;
+                                    height: 0;
+                                    padding-bottom: 100%;
+                                    background-repeat: no-repeat;
+                                    background-position: center center;
+                                    background-size: cover;">
+						</div>
+						<p>Test {{ p }}</p>
+					</div>
+					{% endfor %}
+				</div>
+				<div class="col-lg-6" id="slider1-nav">
+					{% for p in photos %}
+					<div>
+						<div style="background-image: url('/static/{{ p }}');
+                                    position:relative;
+                                    width: 100%;
+                                    height: 0;
+                                    padding-bottom: 100%;
+                                    background-repeat: no-repeat;
+                                    background-position: center center;
+                                    background-size: cover;">
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</section> -->
+
+	<section id="fotka" style="padding-top: 3px; box-shadow: 0 4px 2px -2px gray; margin: auto;">
+		<!-- <img src="{% static 'images/home/maket2.png' %}" class="img-responsive" style="float: left;"> -->
+		<img src="{% static 'images/home/maket1.png' %}" class="img-responsive" style="">
+	</section>
+
+	<section style="box-shadow: 0 4px 2px -2px gray; padding-top: 20px;" >
+		<a name="service"></a>
+		<div class="row">
+			<div class="col-lg-12" style="text-align: center">
+				<p style="font-size: 18pt;">Услуги</p>
+			</div>
+		</div>
+		<div style="padding: 50px;">
+			<div class="row" style="padding-top: 20px;">
+				<div class="col-lg-2"></div>
+				<div class="col-lg-8" style="text-align: center;">
+					<div class="col-lg-3" style="text-align: center;">
+						<img src="{% static 'images/home/button_2_1.png' %}" class="img-responsive">
+						<span style="text-align: center;">Парикмахерская</span>
+					</div>
+					<div class="col-lg-3" style="text-align: center;">
+						<img src="{% static 'images/home/button_2_2.png' %}" class="img-responsive">
+						<span style="text-align: center;">Ногтевой сервис</span>
+					</div>
+					<div class="col-lg-3" style="text-align: center;">
+						<img src="{% static 'images/home/button_2_3.png' %}" class="img-responsive">
+						<span style="text-align: center;">Солярий</span>
+					</div>
+					<div class="col-lg-3" style="text-align: center;">
+						<img src="{% static 'images/home/button_2_4.png' %}" class="img-responsive">
+						<span style="text-align: center;">Депиляция</span>
+					</div>
+				</div>
+				<div class="col-lg-2"></div>
+			</div>
+			<div class="row" style="padding-top: 20px;">
+				<div class="col-lg-4"></div>
+				<div class="col-lg-4" style="text-align: center;">
+					<div class="col-lg-6" style="text-align: center;">
+						<img src="{% static 'images/home/button_2_5.png' %}" class="img-responsive">
+						<span style="text-align: center;">Коррекция цвета волос</span>
+					</div>
+					<div class="col-lg-6" style="text-align: center;">
+						<img src="{% static 'images/home/button_2_6.png' %}" class="img-responsive">
+						<span style="text-align: center;">Архитектура бровей</span>
+					</div>
+				</div>
+				<div class="col-lg-4"></div>
+			</div>
+		</div>
+	</section>
+	<section style="box-shadow: 0 4px 2px -2px gray; padding-top: 20px;">
+		<a name="master"></a>
+		<div class="row">
+			<div class="col-lg-12" style="text-align: center">
+				<p style="font-size: 18pt;">Мастера</p>
+			</div>
+		</div>
+		<div class="row">
+			{% for m in masters %}
+			<div class="col-lg-12" style="padding-left: 10%; padding-right: 10%; padding-top: 20px; margin-bottom: 40px;">
+				<div class="col-lg-3" style="padding: 0;">
+					<img src="/static/{{ m.photo_link }}">
+					<p style="margin-top: 30px; text-align: left; font-size: 14pt;">Парикмахер широкого профиля, мастер-колорист. Опыт работы более 20лет.</p>				
+				</div>
+				<div class="col-lg-9" style="margin-top: 30px;">
+					<a name="master{{ m.id }}"></a>
+					<p class="text-center" style="font-size: 16pt;">{{ m.name }}</p>
+					<form id="feedback-form" class="form-inline" action="/#master{{ m.id }}" name="contact-form" method="get" style="margin-bottom: 60px;">
+				    	{% csrf_token %}
+				    	<!-- <div class="col-lg-3"></div> -->
+				    	<div class="form-group col-lg-6">
+							<input class="form-control" type="date" id="start" name="day" required="required" value="{{ day }}">
+						</div>
+						<div class="form-group col-lg-6">
+							<input class="form-control btn btn-success" type="submit" name="submit" value="Выбрать день">
+						</div>
+						<!-- <div class="col-lg-3"></div> -->
+					</form>
+					<form id="feedback-form" style="margin-top: 20px;" class="" name="contact-form" method="post">
+				    	{% csrf_token %}
+				    	<input type="hidden" name="master_id" value="{{ m.id }}">
+				    	<!-- <input type="hidden" name="day" value="{{ day }}"> -->
+				    	<div class="col-lg-7" style="text-align: center;">
+					    	<div class="form-group" style="/*max-width: 200px;*/">
+								<input class="form-control" type="text" name="name" placeholder="Имя" required="required">
+							</div>
+							<div class="form-group" style="/*max-width: 200px;*/">
+								<input class="form-control" type="tel" name="phone" placeholder="Телефон" required="required">
+							</div>
+							<div class="form-group" style="/*max-width: 200px;*/">
+								<input class="form-control" type="email" name="email" placeholder="Email" required="required">
+							</div>
+							<div class="form-group" style="/*max-width: 200px;*/">
+								<select class="form-control" style="" name="service_id" required="required">
+									{% for s in m.services %}
+										<option value="{{ s.id }}">{{ s.name }}</option>
+									{% endfor %}
+								</select>
+							</div>
+						</div>
+						<div class="col-lg-5" style="text-align: center;">
+							<div class="form-group">
+								<p style="max-width: 180px;">{% for w in m.wh %}<label style="border: 1px solid green;border-radius: 20px; margin-left: 5px; width: 80px; height: 33px;padding: 5px;"><input name="time" type="radio" value="{{ w }}" required="required"/> {{ w }}</label>{% endfor %}</p>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-lg-12" style="padding-left: 30px; padding-right: 30px;">
+								<input class="form-control btn btn-success" type="submit" name="submit" value="Записаться">
+							</div>
+						</div>
+					</form>
+					{% if selected_master_id == m.id %}	
+						{% if success %}
+							<p style="color: green;">{{ success }} Вы записаны к {{ selected_master }} на {{ selected_service }} {{ selected_time }}.</p>
+						{% endif %}
+						{% if error %}
+							<p style="color: red;">{{ error }}</p>
+						{% endif %}
+					{% endif %}
+				</div>
+			</div>
+			{% endfor %}
+
+			<!-- <div class="col-lg-12" style="padding-left: 200px; margin-bottom: 40px;">
+				<div class="col-lg-3">
+					<img src="{% static 'images/home/button_3_2.png' %}">
+				</div>
+				<div class="col-lg-9" style="margin-top: 30px;">
+					<p class="text-center">Мастер по подшпилингу Антон Бидон</p>
+					<p class="text-center">ЗапИсаться</p>
+				</div>
+			</div>
+			<div class="col-lg-12" style="padding-left: 200px; margin-bottom: 40px;">
+				<div class="col-lg-3">
+					<img src="{% static 'images/home/phone.png' %}" width="180" height="180">
+				</div>
+				<div class="col-lg-9" style="margin-top: 30px;">
+					<p class="text-center">Мастер по Отшпилингу Антон Вагон</p>
+					<p class="text-center">ЗапИсаться</p>
+				</div>
+			</div> -->
+		</div>
+	</section>
+
+	<section>
+		<a name="contact"></a>
+		<div class="container" style="padding-left: 10%; padding-right: 10%; padding-top: 20px; margin-bottom: 40px;">
+			<div class="row">
+				<div class="col-lg-12" style="text-align: center">
+					<p style="font-size: 18pt;">Контакты</p>
+				</div>
+				<div class="col-lg-6">
+					<img src="{% static 'images/home/map.png' %}">
+				</div>
+				<div class="col-lg-6">
+					<div class="col-lg-12">
+						<div class="col-lg-2" style="text-align: left; float: left;">
+							<img src="{% static 'images/home/address.png' %}">
+						</div>
+						<div class="col-lg-10">
+							<p style="font-size: 14pt;">Закамск</p>
+							<p style="font-size: 14pt;">Ул. Маршала Рыбалко, 87</p>
+						</div>
+					</div>
+					<div class="col-lg-12">
+						<div class="col-lg-2" style="text-align: left; float: left;">
+							<img src="{% static 'images/home/phone.png' %}">
+						</div>
+						<div class="col-lg-10">
+							<p style="font-size: 14pt;">8(342)252-41-52</p>
+							<p style="font-size: 14pt;">+7(912)88-40-248</p>
+						</div>
+					</div>
+					<div class="col-lg-12 text-center">
+						<p style="font-size: 16pt;">Обратная связь</p>
+					</div>
+					<form action="mailto:novonatalya921@inbox.ru" enctype="text/plain" method="post">
+						<div class="col-lg-12" style="text-align: center;">
+					    	<div class="form-group" style="/*max-width: 200px;*/">
+								<input class="form-control" type="text" name="name" placeholder="Имя" required="required">
+							</div>
+							<div class="form-group" style="/*max-width: 200px;*/">
+								<input class="form-control" type="tel" name="phone" placeholder="Телефон" required="required">
+							</div>
+							<div class="form-group" style="/*max-width: 200px;*/">
+								<input class="form-control" type="email" name="email" placeholder="Email" required="required">
+							</div>
+							<div class="form-group" style="/*max-width: 200px;*/">
+								<textarea class="form-control" type="text" name="message" placeholder="Сообщение" required="required"></textarea>
+							</div>
+							<div class="form-group" style="/*max-width: 200px;*/">
+								<input class="form-control btn btn-success" type="submit" name="submit" value="Написать">
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>			
+		</div>
+	</section>
+
+	{% comment %}<section id="slider"><!--slider-->
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12" {% if current_page == 'feedback_view' %} style="padding: 0;box-shadow: 0px 0px 200px 1px;" {% endif %}>
+					{% if current_page != 'feedback_view' %}
+					<div id="slider-carousel" class="carousel slide" data-ride="carousel">
+						<ol class="carousel-indicators">
+							{% for b in banners %}
+							{% if forloop.first %}
+								<li data-target="#slider-carousel" data-slide-to="{{ forloop.counter0 }}" class="active"></li>
+							{% else %}
+								<li data-target="#slider-carousel" data-slide-to="{{ forloop.counter0 }}"></li>
+							{% endif %}
+							{% endfor %}
+						</ol>
+						
+						<div class="carousel-inner">
+							{% for b in banners %}
+							{% if forloop.first %}
+								<div class="item active">
+							{% else %}
+								<div class="item">
+							{% endif %}
+								<div class="col-sm-6">
+									<h1>{{ b.header }}</h1>
+									<h2>{{ b.name }}</h2>
+									<p>{{ b.description }}</p>
+									<a type="button" class="btn btn-default get" href="?query={{ b.button_href }}">{{ b.button_text }}</a>
+								</div>
+								<div class="col-sm-6">
+									<img src="{{ b.thumb.url }}" class="girl img-responsive" alt="" />
+									<!-- <img src="{% static 'images/home/pricing.png' %}"  class="pricing" alt="" /> -->
+								</div>
+							</div>
+							{% endfor %}
+						</div>
+						<a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
+							<i class="fa fa-angle-left"></i>
+						</a>
+						<a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
+							<i class="fa fa-angle-right"></i>
+						</a>
+					</div>
+					
+					{% else %}
+					{# TODO: make photos of shops and links updating map placemarks !!! #}
+					<div class="col-sm-6 photo-of-shop" style="padding: 0;" onclick="switchPlacemarks(coord1)">
+						<div class="link-show-on-map-container" style="position: absolute;
+    							z-index: 1;
+    							width: 100%;
+    							height: 100%;
+    							background: #fff;
+    							text-align: center;
+    							vertical-align: middle;
+    							font-size: 30px;
+    							font-family: 'Roboto', sans-serif;"></div>
+    					<a class="link-show-on-map" style="position: absolute;
+    					z-index: 2; width: 100%; height: 20%; top: 45%;
+    					text-shadow: 1px 1px 1px #3e3e3e;
+    					font-size: 17px; text-align: center; cursor: pointer;">Показать на карте</a>
+						<div style="background-image: url({% static 'images/home/pushkarskaya.png' %});
+                                    position:relative;
+                                    width: 100%;
+                                    height: 0;
+                                    padding-bottom: 50%;
+                                    background-repeat: no-repeat;
+                                    background-position: center center;
+                                    background-size: cover;"></div>
+					</div>
+					<div class="col-sm-6 photo-of-shop" style="padding: 0;" onclick="switchPlacemarks(coord2)">
+						<div class="link-show-on-map-container" style="position: absolute;
+    							z-index: 1;
+    							width: 100%;
+    							height: 100%;
+    							background: #fff;
+    							text-align: center;
+    							vertical-align: middle;
+    							font-size: 30px;
+    							font-family: 'Roboto', sans-serif;"></div>
+    					<a class="link-show-on-map" style="position: absolute;
+    					z-index: 2; width: 100%; height: 20%; top: 45%;
+    					text-shadow: 1px 1px 1px #3e3e3e;
+    					font-size: 17px; text-align: center; cursor: pointer;">Показать на карте</a>
+						<div style="background-image: url({% static 'images/home/solikamskaya.png' %});
+                                    position:relative;
+                                    width: 100%;
+                                    height: 0;
+                                    padding-bottom: 50%;
+                                    background-repeat: no-repeat;
+                                    background-position: center center;
+                                    background-size: cover;"></div>
+					</div>
+
+					{% endif %}
+					
+				</div>
+			</div>
+		</div>
+	</section><!--/slider-->
+	{% endcomment %}
+	
+	{% block content %}
+	{% endblock %}
+	
+	
+	<footer id="footer"><!--Footer-->
+		
+		<div class="footer-bottom">
+			<div class="container">
+				<div class="row">
+					<p class="pull-left"><span>&copy; {{ year }} <a href="#"> Астра</a>.</span></p>
+					<p class="pull-right"></p>
+				</div>
+			</div>
+		</div>
+		
+	</footer><!--/Footer-->
+	
+
+  
+    <script src="{% static 'js/jquery.js' %}"></script>
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'js/jquery.scrollUp.min.js' %}"></script>
+	<script src="{% static 'js/price-range.js' %}"></script>
+	<script src="{% static 'js/knockout.js' %}"></script>
+	<script src="{% static 'js/conf.js' %}"></script>
+    <script src="{% static 'js/UVM.js' %}"></script>
+    <script src="{% static 'js/jquery.prettyPhoto.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  	<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  	<script type="text/javascript" src="{% static 'js/slick.min.js' %}"></script>
+    
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

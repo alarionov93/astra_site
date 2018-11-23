@@ -1,0 +1,90 @@
+{% extends 'c_index.html' %}
+
+{% block content %}
+	 
+	 <div id="contact-page" class="container">
+    	<div class="bg">
+	    	<div class="row">    		
+	    		<div class="col-sm-12">    			   			
+					<h2 class="title text-center">Свяжитесь с <strong>нами</strong></h2>
+					<div id="gmap" class="contact-map">
+						
+					</div>
+				</div>			 		
+			</div>    	
+    		<div class="row">  	
+	    		<div class="col-sm-8">
+	    			<div class="contact-form" id="feedback_form">
+	    				<h2 class="title text-center">Обратная связь</h2>
+	    				<!-- <div class="status alert alert-success" style="display: none"></div> -->
+	    				<p id="msg" class="text-info"></p>
+        				<p id="err" class="text-danger"></p>
+        				<!-- ko if: !customerVoted() -->
+				    	<form id="feedback-form" class="contact-form row" name="contact-form" method="post">
+				    		{% csrf_token %}
+				            <div style="margin-bottom: 20px;" class="form-group col-md-12">
+				                <input type="text" data-bind="css: { 'err-in-input': !customer.firstName.isValid() && !firstShow() }, value: customer.firstName" class="form-control" required="required" placeholder="Имя">
+				            </div>
+				            <div class="col-sm-12" style="text-align: right;margin-top: -20px;"><p  style="font-size: x-small;" class="small-line text-danger" data-bind="visible: !customer.firstName.isValid() && !firstShow()">Вероятно, поле заполнено неверно.</p></div>
+				            <div style="margin-bottom: 20px;" class="form-group col-md-6">
+				                <input type="text" data-bind="value: customer.phone" class="form-control" required="required" placeholder="Телефон">
+				            </div>
+				            <div style="margin-bottom: 20px;" class="form-group col-md-6">
+				                <input type="email" data-bind="css: { 'err-in-input': !customer.email.isValid() && !firstShow() }, value: customer.email" class="form-control" required="required" placeholder="Email">
+				            </div>
+				            <div class="col-sm-12" style="text-align: right;margin-top: -20px;"><p style="font-size: x-small;" class="small-line text-danger" data-bind="visible: !customer.email.isValid() && !firstShow()">Вероятно, поле заполнено неверно.</p></div>
+				            <div style="margin-bottom: 20px;" class="form-group col-md-12">
+				                <textarea data-bind="css: { 'err-in-input': !feedbackText.isValid() && !firstShow() }, value: feedbackText" required="required" class="form-control" rows="8" placeholder="Сообщение"></textarea>
+				            </div>
+				            <div class="col-sm-12" style="text-align: right;margin-top: -20px;"><p style="font-size: x-small;" class="small-line text-danger" data-bind="visible: !feedbackText.isValid() && !firstShow()">Вероятно, поле заполнено неверно.</p></div>
+
+				            <div class="col-sm-12">
+				            	<p><input type="checkbox" style="height: 20px; width: 20px; margin: 3px; float: left;" data-bind="checked: customer.agreed" class="form-control">Я согласен на получение информации рекламного характера.</p>
+				            </div>
+
+				            <div class="form-group col-md-12">
+				                <input type="submit" data-bind="click: sendFeedback()" class="btn btn-primary pull-right" value="Отправить">
+				            </div>
+				        </form>
+				        <!-- /ko -->
+	    			</div>
+	    		</div>
+	    		<div class="col-sm-4">
+	    			<div class="contact-info">
+	    				<h2 class="title text-center">Контакты</h2>
+	    				<address>
+	    					<p data-bind="text: settings().cSiteName"></p>
+							<p data-bind="text: settings().shopEmail"></p>
+							<p>Телефоны:</p>
+							<div data-bind="foreach: settings().company_phones">
+								<p data-bind="text: $data"></p>
+							</div>
+							<p>Адреса:</p>
+							<div data-bind="foreach: settings().company_addresses">
+								<p data-bind="text: $data"></p>
+							</div>
+	    				</address>
+	    				<div class="social-networks">
+	    					<h2 class="title text-center">Мы в соцсетях</h2>
+							<ul>
+								<li>
+									<a href="#"><i class="fa fa-facebook"></i></a>
+								</li>
+								<li>
+									<a href="#"><i class="fa fa-twitter"></i></a>
+								</li>
+								<li>
+									<a href="#"><i class="fa fa-google-plus"></i></a>
+								</li>
+								<li>
+									<a href="#"><i class="fa fa-youtube"></i></a>
+								</li>
+							</ul>
+	    				</div>
+	    			</div>
+    			</div>    			
+	    	</div>  
+    	</div>	
+    </div><!--/#contact-page-->
+	
+{% endblock %}

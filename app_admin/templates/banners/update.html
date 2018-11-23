@@ -1,0 +1,30 @@
+{% extends '_base.html' %}
+{% load bootstrap3 %}
+
+{% block content %}
+  <hr>
+  <h4 class="text-center text-danger">Внимание! Используйте картинку с соотношением сторон 1 к 1 и со стороной не менее чем 400px!</h4>
+  <form action="" method="post" class="form" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    {% buttons %}
+        <button type="submit" class="btn btn-primary">
+            {% bootstrap_icon "plus" %} Сохранить
+        </button>
+    {% endbuttons %}
+  </form>
+
+  <form action="{% url 'banner_toggle_active' banner.id %}" method="post">
+    {% csrf_token %}
+
+    {%  if banner.enabled %}
+      <button type="submit" class="btn btn-danger">
+        {% bootstrap_icon "remove" %} Отключить
+      </button>
+    {% else %}
+      <button type="submit" class="btn btn-success">
+      {% bootstrap_icon "check" %} Включить
+    </button>
+    {% endif %}
+  </form>
+{% endblock %}
