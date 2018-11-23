@@ -42,16 +42,16 @@ def index(request):
         phone = request.POST.get('phone', None)
         email = request.POST.get('email', None)
         service_id = request.POST.get('service_id', None)
-        if all([time, master_id, name, phone, email, service_id]):
+        context.update({
+            'selected_master_id': master_id,
+        })
+        if all([time, master_id, name, phone, service_id]):
             try:
                 open('/tmp/astra.log', 'a').write('2\r\n')
                 time_utc = '%sT%s:%s:00.000Z' % (day, time.split(':')[0], time.split(':')[1])
                 print(time_utc)
                 # time_str = datetime.strptime(time, '%Y-%m-%dT%H:%M:%S.%fZ')
                 master_obj = models.Master.objects.get(pk=master_id)
-                context.update({
-                    'selected_master_id': master_obj.id,
-                })
                 service_obj = models.Service.objects.get(pk=service_id)
                 open('/tmp/astra.log', 'a').write('3\r\n')
 
@@ -66,12 +66,13 @@ def index(request):
                     'selected_service': service_obj.name
                 })
             except ValueError as e:
-                open('/tmp/astra.log', 'a').write('err1\r\n')
+                open('/tmp/astra.log', 'a').write('err1_wrong_time\r\n')
                 context.update({'error': '%s' % e})
             except Exception as e:
-                open('/tmp/astra.log', 'a').write('err2\r\n')
-                print(555555555555, e)
+                open('/tmp/astra.log', 'a').write('err2 %s\r\n' % e)
+                context.update({'error': 'Ошибка, попробуйте еще раз через некоторое время'})
         else:
+            open('/tmp/astra.log', 'a').write('err3_form_not_filled\r\n')
             context.update({'error': 'Проверьте заполнение всех полей формы'})
 
     return render(request, 'c_index.html', context=context)
