@@ -67,11 +67,11 @@ def index(request):
                     'selected_service': service_obj.name
                 })
             except ValueError as e:
-                open('/tmp/astra.log', 'a').write('err1_wrong_time\r\n')
                 context.update({'error': '%s' % e})
+                open('/tmp/astra.log', 'a').write('err1_wrong_time\r\n')
             except Exception as e:
-                open('/tmp/astra.log', 'a').write('err2 %s\r\n' % e)
                 context.update({'error': 'Ошибка, попробуйте еще раз через некоторое время'})
+                open('/tmp/astra.log', 'a').write('err2 %s\r\n' % e)
         else:
             open('/tmp/astra.log', 'a').write('err3_form_not_filled\r\n')
             context.update({'error': 'Проверьте заполнение всех полей формы'})
