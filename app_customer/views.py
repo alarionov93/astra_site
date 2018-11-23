@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from core import models
 from datetime import datetime
 
-import traceback
+import traceback, sys
 # Create your views here.
 
 def add_meta(ctx, page_header=None, current_page=None):
@@ -33,7 +33,8 @@ def index(request):
 
     context.update({'masters': masters, 'day': day})
     if request.POST:
-        print(request.POST)
+        open('/tmp/astra.log', 'a').write('1\r\n')
+        # print(request.POST, file=sys.stderr)
         master_id = request.POST.get('master_id', None)
         # date = request.POST.get('')
         time = request.POST.get('time', None)
@@ -43,6 +44,7 @@ def index(request):
         service_id = request.POST.get('service_id', None)
         if all([time, master_id, name, phone, email, service_id]):
             try:
+                open('/tmp/astra.log', 'a').write('2\r\n')
                 time_utc = '%sT%s:%s:00.000Z' % (day, time.split(':')[0], time.split(':')[1])
                 print(time_utc)
                 # time_str = datetime.strptime(time, '%Y-%m-%dT%H:%M:%S.%fZ')
@@ -51,8 +53,11 @@ def index(request):
                     'selected_master_id': master_obj.id,
                 })
                 service_obj = models.Service.objects.get(pk=service_id)
+                open('/tmp/astra.log', 'a').write('3\r\n')
+
                 jr = models.JournalRecord.objects.create(master=master_obj, service=service_obj, time=time_utc, client=name, phone=phone, email=email)
                 # jr.save()
+                open('/tmp/astra.log', 'a').write('4\r\n')
                 context.update({
                     'success': 'Спасибо!',
                     'selected_master': master_obj.name,
@@ -61,8 +66,10 @@ def index(request):
                     'selected_service': service_obj.name
                 })
             except ValueError as e:
+                open('/tmp/astra.log', 'a').write('err1\r\n')
                 context.update({'error': '%s' % e})
             except Exception as e:
+                open('/tmp/astra.log', 'a').write('err2\r\n')
                 print(555555555555, e)
         else:
             context.update({'error': 'Проверьте заполнение всех полей формы'})
