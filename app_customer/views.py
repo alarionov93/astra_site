@@ -61,11 +61,11 @@ def index(request):
                     'selected_service': service_obj.name
                 })
             except ValueError as e:
-                context.update({'error': 'Ошибка сервера %s' % e})
+                context.update({'error': '%s' % e})
             except Exception as e:
                 print(555555555555, e)
         else:
-            context.update({'error': 'Ошибка сервера'})
+            context.update({'error': 'Проверьте заполнение всех полей формы'})
 
     return render(request, 'c_index.html', context=context)
 

@@ -48,6 +48,22 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Roboto', sans-serif;
 }
 
+.img-header-to-hide {
+  display: none;
+}
+.img-header-to-show {
+  display: block;
+}
+
+@media (max-width: 500px) {                  
+   .img-header-to-hide {
+      display: block;
+   }
+   .img-header-to-show {
+      display: none;
+   }
+}
+
 .btn:hover, 
 .btn:focus{
   outline: none;

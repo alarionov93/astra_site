@@ -51,7 +51,7 @@
 	
 		<div class="header-bottom" style="padding: 0; box-shadow: 0 4px 2px -2px gray;"><!--header-bottom-->
 			<div style="background-color: #f7f4cf; width: 100%; height: 90px;">
-				<div style="padding-top: 30px; padding-left: 100px; float: left; font-size: 18pt;">
+				<div style="padding-top: 30px; padding-left: 8%; float: left; font-size: 18pt;">
 					Салон красоты в Закамске
 				</div>
 				<!-- <div style="width: 30%; padding-top: 40px; padding-left: 100px; float: right;">
@@ -155,8 +155,8 @@
 	</section> -->
 
 	<section id="fotka" style="padding-top: 3px; box-shadow: 0 4px 2px -2px gray; margin: auto;">
-		<!-- <img src="{% static 'images/home/maket2.png' %}" class="img-responsive" style="float: left;"> -->
-		<img src="{% static 'images/home/maket1.png' %}" class="img-responsive" style="">
+		<img src="{% static 'images/home/maket12.png' %}" class="img-responsive img-header-to-hide" style="">
+		<img src="{% static 'images/home/maket1.png' %}" class="img-responsive img-header-to-show" style="">
 	</section>
 
 	<section style="box-shadow: 0 4px 2px -2px gray; padding-top: 20px;" >
@@ -170,19 +170,19 @@
 			<div class="row" style="padding-top: 20px;">
 				<div class="col-lg-2"></div>
 				<div class="col-lg-8" style="text-align: center;">
-					<div class="col-lg-3" style="text-align: center;">
+					<div class="col-lg-3 col-sm-3 col-xs-12" style="text-align: center;max-width: 190px;">
 						<img src="{% static 'images/home/button_2_1.png' %}" class="img-responsive">
 						<span style="text-align: center;">Парикмахерская</span>
 					</div>
-					<div class="col-lg-3" style="text-align: center;">
+					<div class="col-lg-3 col-sm-3 col-xs-12" style="text-align: center;max-width: 190px;">
 						<img src="{% static 'images/home/button_2_2.png' %}" class="img-responsive">
 						<span style="text-align: center;">Ногтевой сервис</span>
 					</div>
-					<div class="col-lg-3" style="text-align: center;">
+					<div class="col-lg-3 col-sm-3 col-xs-12" style="text-align: center;max-width: 190px;">
 						<img src="{% static 'images/home/button_2_3.png' %}" class="img-responsive">
 						<span style="text-align: center;">Солярий</span>
 					</div>
-					<div class="col-lg-3" style="text-align: center;">
+					<div class="col-lg-3 col-sm-3 col-xs-12" style="text-align: center;max-width: 190px;">
 						<img src="{% static 'images/home/button_2_4.png' %}" class="img-responsive">
 						<span style="text-align: center;">Депиляция</span>
 					</div>
@@ -192,11 +192,11 @@
 			<div class="row" style="padding-top: 20px;">
 				<div class="col-lg-4"></div>
 				<div class="col-lg-4" style="text-align: center;">
-					<div class="col-lg-6" style="text-align: center;">
+					<div class="col-lg-6 col-sm-6 col-xs-12" style="text-align: center;max-width: 190px;">
 						<img src="{% static 'images/home/button_2_5.png' %}" class="img-responsive">
 						<span style="text-align: center;">Коррекция цвета волос</span>
 					</div>
-					<div class="col-lg-6" style="text-align: center;">
+					<div class="col-lg-6 col-sm-6 col-xs-12" style="text-align: center;max-width: 190px;">
 						<img src="{% static 'images/home/button_2_6.png' %}" class="img-responsive">
 						<span style="text-align: center;">Архитектура бровей</span>
 					</div>
@@ -245,7 +245,7 @@
 								<input class="form-control" type="tel" name="phone" placeholder="Телефон" required="required">
 							</div>
 							<div class="form-group" style="/*max-width: 200px;*/">
-								<input class="form-control" type="email" name="email" placeholder="Email" required="required">
+								<input class="form-control" type="email" name="email" placeholder="Email">
 							</div>
 							<div class="form-group" style="/*max-width: 200px;*/">
 								<select class="form-control" style="" name="service_id" required="required">
@@ -268,10 +268,10 @@
 					</form>
 					{% if selected_master_id == m.id %}	
 						{% if success %}
-							<p style="color: green;">{{ success }} Вы записаны к {{ selected_master }} на {{ selected_service }} {{ selected_time }}.</p>
+							<p style="margin-top: 5px; margin-right: 15px; margin-left: 15px; text-align: center; font-size: 14pt; color: green; border: 1px solid green;border-radius: 20px;">{{ success }} Вы записаны к {{ selected_master }} на {{ selected_service }} {{ selected_time }}.</p>
 						{% endif %}
 						{% if error %}
-							<p style="color: red;">{{ error }}</p>
+							<p style="margin-top: 5px; margin-right: 15px; margin-left: 15px; text-align: center; font-size: 14pt; color: red; border: 1px solid red;border-radius: 20px;">{{ error }}</p>
 						{% endif %}
 					{% endif %}
 				</div>

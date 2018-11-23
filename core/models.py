@@ -32,7 +32,7 @@ class JournalRecord(models.Model):
 		if self.master.__check_time__(self.time, self.end_time):
 			print('Created')
 		else:
-			raise ValueError('Wrong time values!')
+			raise ValueError('Приносим свои извинения, но это время недоступно для записи')
 
 
 		super(JournalRecord, self).save(*args, **kwargs)
