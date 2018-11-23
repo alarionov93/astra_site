@@ -73,6 +73,7 @@ h1, h2, h3, h4, h5, h6 {
       padding-top: 30px;
       padding-left: 8%;
       float: left;
+      font-weight: bold;
       font-size: 12pt;
   }
 }
