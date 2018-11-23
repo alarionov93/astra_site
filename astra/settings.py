@@ -25,8 +25,12 @@ SECRET_KEY = '^c)0+jzfsfm6fs!v=5+2vu$=2x@d=_2-%8*4d1&gr(m9g-o(l='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '31.31.202.80', 'xn--80aaa8bkfkhch.xn--p1ai', 'www.xn--80aaa8bkfkhch.xn--p1ai', ]
 
+try:
+    HOSTNAME = socket.gethostname()
+except:
+    HOSTNAME = 'localhost'
 
 # Application definition
 
