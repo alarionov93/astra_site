@@ -55,13 +55,26 @@ h1, h2, h3, h4, h5, h6 {
   display: block;
 }
 
+.header-text {
+  padding-top: 30px;
+  padding-left: 8%;
+  float: left;
+  font-size: 18pt;
+}
+
 @media (max-width: 500px) {                  
    .img-header-to-hide {
       display: block;
-   }
+  }
    .img-header-to-show {
       display: none;
-   }
+  }
+   .header-text {
+      padding-top: 30px;
+      padding-left: 8%;
+      float: left;
+      font-size: 12pt;
+  }
 }
 
 .btn:hover, 

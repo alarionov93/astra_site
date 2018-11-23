@@ -51,7 +51,7 @@
 	
 		<div class="header-bottom" style="padding: 0; box-shadow: 0 4px 2px -2px gray;"><!--header-bottom-->
 			<div style="background-color: #f7f4cf; width: 100%; height: 90px;">
-				<div style="padding-top: 30px; padding-left: 8%; float: left; font-size: 18pt;">
+				<div class="header-text">
 					Салон красоты в Закамске
 				</div>
 				<!-- <div style="width: 30%; padding-top: 40px; padding-left: 100px; float: right;">
@@ -69,13 +69,13 @@
 				</div>
 				<div class="mainmenu pull-right" style="padding-top: 40px; float: right;">
 					<ul class="nav navbar-nav collapse navbar-collapse">
-						<li><a href="{% url 'site_index' %}#service"{% if current_page == 'main' %} class="active" {% endif %}>Услуги</a></li>
+						<li style="text-align: center;"><a href="{% url 'site_index' %}#service"{% if current_page == 'main' %} class="active" {% endif %}>Услуги</a></li>
 					</ul>
 					<ul class="nav navbar-nav collapse navbar-collapse">
-						<li><a href="{% url 'site_index' %}#master"{% if current_page == 'main' %} class="active" {% endif %}>Мастера</a></li>
+						<li style="text-align: center;"><a href="{% url 'site_index' %}#master"{% if current_page == 'main' %} class="active" {% endif %}>Мастера</a></li>
 					</ul>
 					<ul class="nav navbar-nav collapse navbar-collapse">
-						<li><a href="{% url 'site_index' %}#contact"{% if current_page == 'main' %} class="active" {% endif %}>Контакты</a></li>
+						<li style="text-align: center;"><a href="{% url 'site_index' %}#contact"{% if current_page == 'main' %} class="active" {% endif %}>Контакты</a></li>
 					</ul>
 				</div>
 			</div>
