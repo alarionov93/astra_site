@@ -23,7 +23,7 @@ from django.conf import settings
 
 
 urlpatterns = [
-    path('astra_admin/', include(admin_urls.urlpatterns), name='admin_root'),
+    path('astra_18mal9fn8h3473dghs/', include(admin_urls.urlpatterns), name='admin_root'),
     path('', include(customer_urls.urlpatterns), name='client_root'),
     # path('api/', include(api_urls)),
     # url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
