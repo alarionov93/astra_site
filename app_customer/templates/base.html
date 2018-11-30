@@ -233,7 +233,7 @@
 						</div>
 						<!-- <div class="col-lg-3"></div> -->
 					</form>
-					<form id="feedback-form" style="margin-top: 20px;" class="" name="contact-form" method="post">
+					<form id="feedback" style="margin-top: 20px;" class="" name="contact-form" method="post">
 				    	{% csrf_token %}
 				    	<input type="hidden" name="master_id" value="{{ m.id }}" required="required">
 				    	<!-- <input type="hidden" name="day" value="{{ day }}"> -->
@@ -244,9 +244,9 @@
 							<div class="form-group" style="/*max-width: 200px;*/">
 								<input class="form-control" type="tel" name="phone" placeholder="Телефон" required="required">
 							</div>
-							<div class="form-group" style="/*max-width: 200px;*/">
+							<!-- <div class="form-group" style="/*max-width: 200px;*/">
 								<input class="form-control" type="email" name="email" placeholder="Email">
-							</div>
+							 </div>-->
 							<div class="form-group" style="/*max-width: 200px;*/">
 								<select class="form-control" style="" name="service_id" required="required">
 									{% for s in m.services %}
