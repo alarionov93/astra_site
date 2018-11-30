@@ -50,8 +50,8 @@ def index(request):
         if all([time, master_id, name, phone, service_id]):
             try:
                 # open('/tmp/astra.log', 'a').write('2\r\n')
-                time_utc = '%sT%s:%s:00.000Z' % (day, time.split(':')[0], time.split(':')[1])
-                # print(time_utc)
+                time_utc = '%sT%2s:%s:00.000Z' % (day, time.split(':')[0], time.split(':')[1])
+                time_utc = time_utc.replace(' ', '0')
                 # time_str = datetime.strptime(time, '%Y-%m-%dT%H:%M:%S.%fZ')
                 master_obj = models.Master.objects.get(pk=master_id)
                 service_obj = models.Service.objects.get(pk=service_id)
