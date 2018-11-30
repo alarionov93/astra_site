@@ -32,7 +32,7 @@ class JournalRecord(models.Model):
 		if self.master.__check_time__(self.time, self.end_time):
 			print('Created')
 		else:
-			raise ValueError('Приносим свои извинения, но это время недоступно для записи')
+			raise ValueError('Приносим свои извинения, но это время недоступно для записи. Попробуйте записаться на другое время, или выбрать другую услугу.')
 
 
 		super(JournalRecord, self).save(*args, **kwargs)
@@ -101,13 +101,16 @@ class Master(models.Model):
 
 		asked = datetime.strptime(asked_time, '%Y-%m-%dT%H:%M:%S.%fZ')
 		asked_end = datetime.strptime(end_time, '%Y-%m-%dT%H:%M:%S.%fZ')
-		print(111111, asked.hour, file=sys.stderr)
-		print(222222, asked.minute, file=sys.stderr)
-		print(333333, asked_end, file=sys.stderr)
-		# print(set(range(asked.hour, asked_end.hour)), self.time_table(asked_time), file = sys.stderr)
+		# print(111111, asked.hour, file=sys.stderr)
+		# print(222222, asked.minute, file=sys.stderr)
+		# print(333333, asked_end, file=sys.stderr)
 		asked_hour, asked_end_hour = _convert(asked), _convert(asked_end)
+		# print(set(range(asked.hour, asked_end.hour)), self.time_table(asked_time), file = sys.stderr)
+		t = set(range(asked_hour, asked_end_hour)) & self.time_table(asked_time)
+		# print(t)
+		
 		return not (asked.weekday() in [int(x)-1 for x in self.vacant_days.split(',')]) and \
-			not set(range(asked_hour, asked_end_hour)) & self.time_table(asked_time)
+			not t
 
 	def __str__(self):
 		return self.name

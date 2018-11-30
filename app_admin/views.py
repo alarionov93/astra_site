@@ -74,7 +74,7 @@ class JournalRecordList(ListView, AdminContextMixin, WithHeader):
     context_object_name = 'journal_record'
     template_name = 'journal_record/list.html'
     queryset = models.JournalRecord.objects.all()
-    ordering = 'time'
+    ordering = '-time'
     current_page = 'journal_record'
 
 

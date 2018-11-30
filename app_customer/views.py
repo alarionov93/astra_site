@@ -72,7 +72,7 @@ def index(request):
                 context.update({'error': '%s' % e})
                 # open('/tmp/astra.log', 'a').write('err1_wrong_time\r\n')
             except Exception as e:
-                print('Error2')
+                print('Error2: %s' % e)
                 context.update({'error': 'Ошибка, попробуйте еще раз через некоторое время'})
                 # open('/tmp/astra.log', 'a').write('err2 %s\r\n' % e)
         else:

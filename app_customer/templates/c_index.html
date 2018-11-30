@@ -96,7 +96,7 @@
 							{% if m.wh|length > 0 %}
 							<p style="max-width: 180px;">{% for w in m.wh %}<label style="border: 1px solid green;border-radius: 20px; margin-left: 5px; width: 80px; height: 33px;padding: 5px;"><input name="time" type="radio" value="{{ w }}" required="required"/> {{ w }}</label>{% endfor %}</p>
 							{% else %}
-							<p>Выходной</p>
+							<p style="text-align: center; font-size: 14pt; color: green;">Выходной день</p>
 							{% endif %}
 						</div>
 					</div>
