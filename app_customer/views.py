@@ -20,7 +20,7 @@ def add_meta(ctx, page_header=None, current_page=None):
 
 def index(request):
     context = {}
-    open('/tmp/%s' % datetime.now().strftime('%Y-%m-%dT%H:%M:%S.%fZ'), 'w').write(request)
+    # open('/tmp/%s' % datetime.now().strftime('%Y-%m-%dT%H:%M:%S.%fZ'), 'w').write(request)
     masters = models.Master.objects.all()
     day = request.GET.get('day', datetime.now().strftime('%Y-%m-%d'))
     # date = datetime.strptime
@@ -34,7 +34,7 @@ def index(request):
 
     context.update({'masters': masters, 'day': day})
     if request.POST:
-        open('/tmp/astra.log', 'a').write('1\r\n')
+        # open('/tmp/astra.log', 'a').write('1\r\n')
         # print(request.POST, file=sys.stderr)
         master_id = request.POST.get('master_id', None)
         # date = request.POST.get('')
@@ -43,23 +43,23 @@ def index(request):
         phone = request.POST.get('phone', None)
         email = request.POST.get('email', None)
         service_id = request.POST.get('service_id', None)
-        open('/tmp/astra.log', 'a').write('%s %s %s %s %s %s \r\n' % (day, time, master_id, name, phone, service_id))
+        # open('/tmp/astra.log', 'a').write('%s %s %s %s %s %s \r\n' % (day, time, master_id, name, phone, service_id))
         context.update({
             'selected_master_id': master_id,
         })
         if all([time, master_id, name, phone, service_id]):
             try:
-                open('/tmp/astra.log', 'a').write('2\r\n')
+                # open('/tmp/astra.log', 'a').write('2\r\n')
                 time_utc = '%sT%s:%s:00.000Z' % (day, time.split(':')[0], time.split(':')[1])
-                print(time_utc)
+                # print(time_utc)
                 # time_str = datetime.strptime(time, '%Y-%m-%dT%H:%M:%S.%fZ')
                 master_obj = models.Master.objects.get(pk=master_id)
                 service_obj = models.Service.objects.get(pk=service_id)
-                open('/tmp/astra.log', 'a').write('3\r\n')
+                # open('/tmp/astra.log', 'a').write('3\r\n')
 
                 jr = models.JournalRecord.objects.create(master=master_obj, service=service_obj, time=time_utc, client=name, phone=phone, email=email)
                 # jr.save()
-                open('/tmp/astra.log', 'a').write('4\r\n')
+                # open('/tmp/astra.log', 'a').write('4\r\n')
                 context.update({
                     'success': 'Спасибо!',
                     'selected_master': master_obj.name,
@@ -69,12 +69,12 @@ def index(request):
                 })
             except ValueError as e:
                 context.update({'error': '%s' % e})
-                open('/tmp/astra.log', 'a').write('err1_wrong_time\r\n')
+                # open('/tmp/astra.log', 'a').write('err1_wrong_time\r\n')
             except Exception as e:
                 context.update({'error': 'Ошибка, попробуйте еще раз через некоторое время'})
-                open('/tmp/astra.log', 'a').write('err2 %s\r\n' % e)
+                # open('/tmp/astra.log', 'a').write('err2 %s\r\n' % e)
         else:
-            open('/tmp/astra.log', 'a').write('err3_form_not_filled\r\n')
+            # open('/tmp/astra.log', 'a').write('err3_form_not_filled\r\n')
             context.update({'error': 'Проверьте заполнение всех полей формы'})
 
     return render(request, 'c_index.html', context=context)
