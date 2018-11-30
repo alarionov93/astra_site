@@ -206,99 +206,8 @@
 			</div>
 		</div>
 	</section>
-	<section style="box-shadow: 0 4px 2px -2px gray; padding-top: 20px;">
-		<a name="master"></a>
-		<div class="row">
-			<div class="col-lg-12" style="text-align: center">
-				<p style="font-size: 18pt;">Мастера</p>
-			</div>
-		</div>
-		<div class="row">
-			{% for m in masters %}
-			<div class="col-lg-12" style="padding-left: 10%; padding-right: 10%; padding-top: 20px; margin-bottom: 40px;">
-				<div class="col-lg-3" style="padding: 0;">
-					<img src="/static/{{ m.photo_link }}">
-					<p style="margin-top: 30px; text-align: left; font-size: 14pt;">{{ m.resume }}</p>				
-				</div>
-				<div class="col-lg-9" style="margin-top: 30px;">
-					<a name="master{{ m.id }}"></a>
-					<p class="text-center" style="font-size: 16pt;">{{ m.name }}</p>
-					<form id="feedback-form" class="form-inline" action="/#master{{ m.id }}" name="contact-form" method="get" style="margin-bottom: 60px;">
-				    	{% csrf_token %}
-				    	<!-- <div class="col-lg-3"></div> -->
-				    	<div class="form-group col-lg-6">
-							<input class="form-control" type="date" id="start" name="day" required="required" value="{{ day }}">
-						</div>
-						<div class="form-group col-lg-6">
-							<input class="form-control btn btn-success" type="submit" name="submit" value="Выбрать день">
-						</div>
-						<!-- <div class="col-lg-3"></div> -->
-					</form>
-					<form id="feedback" style="margin-top: 20px;" class="" name="contact-form" method="post">
-				    	{% csrf_token %}
-				    	<input type="hidden" name="master_id" value="{{ m.id }}" required="required">
-				    	<!-- <input type="hidden" name="day" value="{{ day }}"> -->
-				    	<div class="col-lg-7" style="text-align: center;">
-					    	<div class="form-group" style="/*max-width: 200px;*/">
-								<input class="form-control" type="text" name="name" placeholder="Имя" required="required">
-							</div>
-							<div class="form-group" style="/*max-width: 200px;*/">
-								<input class="form-control" type="tel" name="phone" placeholder="Телефон" required="required">
-							</div>
-							<!-- <div class="form-group" style="/*max-width: 200px;*/">
-								<input class="form-control" type="email" name="email" placeholder="Email">
-							 </div>-->
-							<div class="form-group" style="/*max-width: 200px;*/">
-								<select class="form-control" style="" name="service_id" required="required">
-									{% for s in m.services %}
-										<option value="{{ s.id }}">{{ s.name }}</option>
-									{% endfor %}
-								</select>
-							</div>
-						</div>
-						<div class="col-lg-5" style="text-align: center;">
-							<div class="form-group">
-								<p style="max-width: 180px;">{% for w in m.wh %}<label style="border: 1px solid green;border-radius: 20px; margin-left: 5px; width: 80px; height: 33px;padding: 5px;"><input name="time" type="radio" value="{{ w }}" required="required"/> {{ w }}</label>{% endfor %}</p>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-lg-12" style="padding-left: 30px; padding-right: 30px;">
-								<input class="form-control btn btn-success" type="submit" name="submit" value="Записаться">
-							</div>
-						</div>
-					</form>
-					{% if selected_master_id == m.id %}	
-						{% if success %}
-							<p style="margin-top: 5px; margin-right: 15px; margin-left: 15px; text-align: center; font-size: 14pt; color: green; border: 1px solid green;border-radius: 20px;">{{ success }} Вы записаны к {{ selected_master }} на {{ selected_service }} {{ selected_time }}.</p>
-						{% endif %}
-						{% if error %}
-							<p style="margin-top: 5px; margin-right: 15px; margin-left: 15px; text-align: center; font-size: 14pt; color: red; border: 1px solid red;border-radius: 20px;">{{ error }}</p>
-						{% endif %}
-					{% endif %}
-				</div>
-			</div>
-			{% endfor %}
-
-			<!-- <div class="col-lg-12" style="padding-left: 200px; margin-bottom: 40px;">
-				<div class="col-lg-3">
-					<img src="{% static 'images/home/button_3_2.png' %}">
-				</div>
-				<div class="col-lg-9" style="margin-top: 30px;">
-					<p class="text-center">Мастер по подшпилингу Антон Бидон</p>
-					<p class="text-center">ЗапИсаться</p>
-				</div>
-			</div>
-			<div class="col-lg-12" style="padding-left: 200px; margin-bottom: 40px;">
-				<div class="col-lg-3">
-					<img src="{% static 'images/home/phone.png' %}" width="180" height="180">
-				</div>
-				<div class="col-lg-9" style="margin-top: 30px;">
-					<p class="text-center">Мастер по Отшпилингу Антон Вагон</p>
-					<p class="text-center">ЗапИсаться</p>
-				</div>
-			</div> -->
-		</div>
-	</section>
+	{% block content %}
+	{% endblock %}
 
 	<section>
 		<a name="contact"></a>
@@ -456,10 +365,6 @@
 		</div>
 	</section><!--/slider-->
 	{% endcomment %}
-	
-	{% block content %}
-	{% endblock %}
-	
 	
 	<footer id="footer"><!--Footer-->
 		
