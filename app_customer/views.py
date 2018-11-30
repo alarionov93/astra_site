@@ -20,6 +20,7 @@ def add_meta(ctx, page_header=None, current_page=None):
 
 def index(request):
     context = {}
+    open('/tmp/%s' % datetime.now().strftime('%Y-%m-%dT%H:%M:%S.%fZ'), 'w').write(request)
     masters = models.Master.objects.all()
     day = request.GET.get('day', datetime.now().strftime('%Y-%m-%d'))
     # date = datetime.strptime
@@ -42,10 +43,10 @@ def index(request):
         phone = request.POST.get('phone', None)
         email = request.POST.get('email', None)
         service_id = request.POST.get('service_id', None)
+        open('/tmp/astra.log', 'a').write('%s %s %s %s %s %s \r\n' % (day, time, master_id, name, phone, service_id))
         context.update({
             'selected_master_id': master_id,
         })
-        open('/tmp/astra.log', 'a').write('%s %s %s %s %s %s \r\n' % (day, time, master_id, name, phone, service_id))
         if all([time, master_id, name, phone, service_id]):
             try:
                 open('/tmp/astra.log', 'a').write('2\r\n')

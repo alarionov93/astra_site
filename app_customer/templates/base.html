@@ -235,7 +235,7 @@
 					</form>
 					<form id="feedback-form" style="margin-top: 20px;" class="" name="contact-form" method="post">
 				    	{% csrf_token %}
-				    	<input type="hidden" name="master_id" value="{{ m.id }}">
+				    	<input type="hidden" name="master_id" value="{{ m.id }}" required="required">
 				    	<!-- <input type="hidden" name="day" value="{{ day }}"> -->
 				    	<div class="col-lg-7" style="text-align: center;">
 					    	<div class="form-group" style="/*max-width: 200px;*/">

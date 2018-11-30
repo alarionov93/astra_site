@@ -4,31 +4,31 @@
 
 ;
 
-ymaps.ready(init);
-var myMap, placemark;
+// ymaps.ready(init);
+// var myMap, placemark;
 
-var coord1 = [57.999544, 56.301705];
-var coord2 = [58.068200, 56.344613];
+// var coord1 = [57.999544, 56.301705];
+// var coord2 = [58.068200, 56.344613];
 
-function init(){     
-    myMap = new ymaps.Map("gmap", {
-        center: [57.999544, 56.301705],
-        zoom: 18
-    });
-    placemark = new ymaps.Placemark([57.999544, 56.301705], { hintContent: 'Автозапчасти', balloonContent: 'Ускоритель' });
-    myMap.geoObjects.add(placemark);
-}
+// function init(){     
+//     myMap = new ymaps.Map("gmap", {
+//         center: [57.999544, 56.301705],
+//         zoom: 18
+//     });
+//     placemark = new ymaps.Placemark([57.999544, 56.301705], { hintContent: 'Автозапчасти', balloonContent: 'Ускоритель' });
+//     myMap.geoObjects.add(placemark);
+// }
 
-function switchPlacemarks(placemark_coords) {
-	var zoom = 18;
-	myMap.setCenter(placemark_coords);
-	myMap.setZoom(zoom);
-	placemark = new ymaps.Placemark(placemark_coords, { hintContent: 'Автозапчасти', balloonContent: 'Ускоритель' });
-    myMap.geoObjects.add(placemark);
-    $('html, body').animate({
-        scrollTop: $("#gmap").offset().top - 300
-    }, 500);
-}
+// function switchPlacemarks(placemark_coords) {
+// 	var zoom = 18;
+// 	myMap.setCenter(placemark_coords);
+// 	myMap.setZoom(zoom);
+// 	placemark = new ymaps.Placemark(placemark_coords, { hintContent: 'Автозапчасти', balloonContent: 'Ускоритель' });
+//     myMap.geoObjects.add(placemark);
+//     $('html, body').animate({
+//         scrollTop: $("#gmap").offset().top - 300
+//     }, 500);
+// }
 
 
 
